@@ -9,7 +9,7 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.static('public'));
 
-app.get('/',function(req,res){
+app.get('/jade',function(req,res){
 	res.render('index');
 });
 
