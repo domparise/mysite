@@ -1,5 +1,11 @@
-$('.nav').on('mouseover', function (event) {
-	// console.log(event);
+$(document).ready( function () {
+	setTimeout( function() {
+		$('#hdr').animate({
+			opacity: 1,
+			backgroundColor: "#FFFFFF",
+			borderBottomColor: "#888888"
+		}, 1500);
+	}, 500);
 });
 $('.nav').on('click', function (event) {
 	$('.nav').removeClass('navd');
@@ -9,16 +15,18 @@ $('#hdr').on('mouseenter', function () {
 	// console.log(event);
 	$(this).stop();
 	$(this).animate({
+		opacity: 1,
 		backgroundColor: "#FFFFFF",
-		borderBottomColor: "#000000"
+		borderBottomColor: "#888888"
 	}, 500);
 });
 $('#hdr').on('mouseleave', function () {
 	// console.log(event);
 	$(this).stop();
 	$(this).animate({
-		backgroundColor: "#F0F0F0",
-		borderBottomColor: "#F0F0F0"
+		opacity: 0.25,
+		backgroundColor: "rgba(240,240,240,0)",
+		borderBottomColor: "rgba(240,240,240,0)"
 	}, 500);
 });
 
