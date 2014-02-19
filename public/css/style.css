@@ -1,12 +1,41 @@
+/*
+Kuler theme:
+	red-orange: B26000;
+	*orange: FF9923;
+	orange: FF8900;
+	darkblue: 007CB2;
+	*lightblue: 00B2FF;
+*/
 @font-face {
-	font-family: 'Latin Modern Sans';
-	src: url('../lib/Latin-Modern-Sans/lmsans10-regular.otf');
+    font-family: 'Latin Modern Sans';
+    src: url('../lib/Latin-Modern-Sans/lmsans10-regular.otf');
+    font-weight: normal;
+    font-style: normal;
 }
+@font-face {
+    font-family: 'Latin Modern Sans';
+    src: url('../lib/Latin-Modern-Sans/lmsans10-oblique.otf');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Latin Modern Sans';
+    src: url('../lib/Latin-Modern-Sans/lmsans10-bold.otf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Latin Modern Sans';
+    src: url('../lib/Latin-Modern-Sans/lmsans10-boldoblique.otf');
+    font-weight: bold;
+    font-style: italic;
+}
+
 body {
 	font-family: 'Latin Modern Sans',"Trebuchet MS", Helvetica, sans-serif;
 	font-size: 150%;
 	margin: 0;
-	background-color: #F0F0F0;
+	background-color: #FFFFFF;
 }
 #hdr {
 	z-index: 1;
@@ -14,29 +43,30 @@ body {
 	width: 100%;
 	height: 12.5%;
 	opacity: 0;
-	background-color: #F0F0F0; 
-	border-bottom: 1px solid #F0F0F0;
+	color: #00B2FF;
+	background-color: #FFFFFF; 
 }
 .nav {
+	opacity: 0;
+	font-weight: bold;
+	font-style: italic;
 	position: relative;
 	margin-left: 5%;
 	top:20%;
 }
 .nav:hover {
-	border-bottom: 2px solid #000000;
 	cursor: pointer;
 }
 .navd {
-	border-bottom: 2px solid #FFFFFF;
+	border-bottom: 4px solid #FFFFFF;
 }
-
 
 section {
 	padding-top: 2.5%;
 }
 
 .content {
-	background-color: #FAFAFA;
+	background-color: #E0E0E0;
 	margin: auto;
 	padding: 2.5%;
 	width: 80%;
@@ -50,32 +80,4 @@ section {
 
 .content.blu {
 	border: 1px solid rgba(25,168,255,0.75);
-}
-
-/***** KONTEXT *****/
-.layer.one {
-	background: #E8E8E8;
-}
-
-.layer.two {
-	background: #F0F0F0;
-}
-
-.layer.three {
-	background: #F0F0F0;
-}
-
-@media screen and (max-width: 400px) {
-	body {
-		font-size: 12px;
-	}
-
-	.layer h2 {
-		font-size: 5em;
-	}
-
-	.bullets li {
-		margin: 0 6px;
-	}
-
 }
