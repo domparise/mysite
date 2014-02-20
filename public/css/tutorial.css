@@ -1,0 +1,82 @@
+/*
+Kuler theme:
+	red-orange: B26000;
+	*orange: FF9923;
+	orange: FF8900;
+	darkblue: 007CB2;
+	*lightblue: 00B2FF;
+*/
+@font-face {
+    font-family: 'Latin Modern Sans';
+    src: url('../lib/Latin-Modern-Sans/lmsans10-regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Latin Modern Sans';
+    src: url('../lib/Latin-Modern-Sans/lmsans10-oblique.otf');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Latin Modern Sans';
+    src: url('../lib/Latin-Modern-Sans/lmsans10-bold.otf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Latin Modern Sans';
+    src: url('../lib/Latin-Modern-Sans/lmsans10-boldoblique.otf');
+    font-weight: bold;
+    font-style: italic;
+}
+
+body {
+	font-family: 'Latin Modern Sans',"Trebuchet MS", Helvetica, sans-serif;
+	font-size: 150%;
+	margin: 0;
+	background-color: #FFFFFF;
+}
+#hdr {
+	z-index: 1;
+	position: fixed;
+	width: 100%;
+	height: 12.5%;
+	opacity: 0;
+	color: #00B2FF;
+}
+.nav {
+	opacity: 0;
+	font-weight: bold;
+	font-size: 110%;
+	position: relative;
+	margin-left: 5%;
+	top:20%;
+}
+.nav:hover {
+	cursor: pointer;
+}
+.navd {
+	border-bottom: 4px solid #FFFFFF;
+}
+
+section {
+	padding-top: 2.5%;
+}
+
+.content {
+	background-color: #E0E0E0;
+	margin: auto;
+	padding: 2.5%;
+	width: 80%;
+	margin-top: 5%;
+	border-radius: 5px;
+} 
+
+.content.orng {
+	border: 1px solid rgba(255,148,0,0.75);
+}
+
+.content.blu {
+	border: 1px solid rgba(25,168,255,0.75);
+}

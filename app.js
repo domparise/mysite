@@ -1,3 +1,5 @@
+// put up on server to get input from friends
+//
 var express = require('express'),
 	app = express();
 
@@ -9,8 +11,17 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.static('public'));
 
-app.get('/jade',function(req,res){
+app.get('/',function(req,res){
 	res.render('index');
+});
+
+var tutorials = {'why-javascript':true};
+
+app.get('/tutorial/:name', function (req, res) {
+	if (req.params.name in tutorials)
+		res.render('tutorial/'+req.params.name);
+	else 
+		res.redirect('/');
 });
 
 app.listen(3000,function(){
