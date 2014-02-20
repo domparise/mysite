@@ -26,8 +26,8 @@ $('.nav').on('click', function (event) {
 $('#hdr').on('mouseenter', function () {
 	$(this).stop().animate({
 		opacity: 1,
-		color: '#FFFFFF',
-		backgroundColor: '#00B2FF'
+		color: '#00B2FF',
+		backgroundColor: '#007CB2'
 	}, 500);
 	$('.nav').stop().animate({
 		opacity: 1,
@@ -37,15 +37,15 @@ $('#hdr').on('mouseenter', function () {
 $('#hdr').on('mouseleave', function () {
 	$(this).stop().animate({
 		color: '#FF9923',
-		backgroundColor: '#FFFFFF'
+		backgroundColor: '#00B2FF'
 	}, 500);
 	$('.nav').stop().animate({
-		opacity: 0.25,
-		color: '#00B2FF'
+		opacity: 0.50,
+		color: '#FFFFFF'
 	}, 500);
 	$('.navd').stop().animate({
-		opacity: 0.75,
-		color: '#00B2FF',
+		opacity: 1,
+		color: '#FFFFFF',
 		borderBottomColor: '#FF9923'
 	}, 500);
 });
