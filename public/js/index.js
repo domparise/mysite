@@ -19,6 +19,9 @@ $('.nav').on('click', function (event) {
 	$('.nav').removeClass('navd');
 	$(this).addClass('navd');
 	$('.navd').css('border-bottom-color','#FFFFFF');
+	/* $(this).stop().animate({
+		color: '#FF9923'
+	}, 500); */
 });
 $('#hdr').on('mouseenter', function () {
 	$(this).stop().animate({
