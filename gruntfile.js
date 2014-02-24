@@ -2,7 +2,10 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      src: ['*.js','public/js/*']
+      src: ['*.js','public/js/*'],
+      options: {
+        ignores: ['public/js/analytics.js']
+      }
     },
     watch: {
         jade: {
