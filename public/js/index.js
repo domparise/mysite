@@ -4,11 +4,12 @@ $(document).ready( function () {
 	$('.edge').animate({
 		opacity: 1,
 		color: '#FFFFFF',
-		backgroundColor: '#00B2FF'
+		// backgroundColor: '#00B2FF'
+		backgroundColor: '#007CB2'
 	}, 1500);
 	setTimeout( function () {
 		$('.nav').animate({
-			opacity: 0.50,
+			opacity: 0.30,
 			color: '#FFFFFF',
 		}, 2000);
 		$('.navd').animate({
@@ -42,21 +43,21 @@ var transitionTime = 400;
 $('header,footer').on('mouseover', function () {
 	$('header,footer').stop().animate({
 		opacity: 1,
-		backgroundColor: '#007CB2'
+		// backgroundColor: '#007CB2'
 	}, transitionTime);
 	$('.nav').stop().animate({
 		opacity: 1,
-		color: '#FFFFFF'
+		// color: '#FFFFFF'
 	}, transitionTime);
 });
 $('header,footer').on('mouseout', function () {
 	$('header,footer').stop().animate({
 		opacity: 1,
-		backgroundColor: '#00B2FF'
+		// backgroundColor: '#00B2FF'
 	}, transitionTime);
 	$('.nav').stop().animate({
-		opacity: 0.50,
-		color: '#FFFFFF'
+		opacity: 0.30,
+		// color: '#FFFFFF'
 	}, transitionTime);
 	$('.navd').stop().animate({
 		opacity: 1,
@@ -88,9 +89,11 @@ $('footer').on('vmouseover', function () {
 var i = [0,0,0], 
 	that = [0,0,0],
 	interval = [0,0,0], 
-	offset = [0,0,0],
-	timeout;
+	offset = [0,0,0];
 $('.content').on('mouseover',function(){
+	$(this).stop().animate({
+		backgroundColor:'#FFFFFF'
+	},250);
 	var idx = $(this).index();
 	that[idx] = $(this);
 	offset[idx] = $(this).offset().top;
@@ -102,15 +105,11 @@ $('.content').on('mouseover',function(){
 		if(i[idx]>=25) clearInterval(interval[idx]);
 		else i[idx] += 1;
 	},1);
-	timeout = setTimeout(function() {
-		$('#web-box').attr('src','https://www.facebook.com/dom.parise');
-		$('#web-box').animate({
-			opacity: 1
-		}, 250);
-	}, 500);
 });
 $('.content').on('mouseout',function(){
-	clearTimeout(timeout);
+	$(this).stop().animate({
+		backgroundColor:'#FAFAFA'
+	},250);
 	var idx = $(this).index();
 	that[idx] = $(this);
 	clearInterval(interval[idx]);

@@ -35,7 +35,10 @@ body {
 	font-family: 'Latin Modern Sans',"Trebuchet MS", Helvetica, sans-serif;
 	font-size: 150%;
 	margin: 0;
-	background-color: rgba(20,177,250,0.25);
+	background-color: #FAFAFA;
+	/*background-color: rgba(20,177,250,0.25);*/
+	/*background-color: rgba(0,178,255,0.5);*/
+	/*background-color: rgba(0,124,178,0.25);*/
 }
 header {
 	width: 100%;
@@ -51,6 +54,7 @@ section {
 a {
 	text-decoration: none;
 	color: #007CB2;
+	/*color:#00B2FF;*/
 }
 
 a:hover {
