@@ -1,13 +1,20 @@
 extends layout
 block content
 	section#about
-		p.content Hi I'm 
-			a(href='https://www.facebook.com/dom.parise',target='_blank') Dom.
-		p.content I like 
-			a(href='https://github.com/dparise',target='_blank') coding.
-		p.content And other 
-			a(href='https://twitter.com/primo_parise',target='_blank') things.
+		div#abt-left
+		div#abt-right
+			p.content Hi I'm <a href='https://www.facebook.com/dom.parise' target='_blank'>Dom</a>.
+			p.content I like <a href='https://github.com/dparise' target='_blank'>coding</a>.
+			p.content And other <a href='https://twitter.com/primo_parise' target='_blank'>things</a>.
 	section#tutorials
-		p.content Learn from me.. I've got more coming soon...
+		p.content
+			| I love javascript, and want to share what I know with you.
+			br
+			br
+			| I've got more coming soon...
+		br
+		p.content
+			| For now, try <a href='http://domparise.tumblr.com/'>here</a> or <a href='https://github.com/dparise/tutorial'>here</a> instead.
+			br
 	section#projects
-		p.content I do things.. More here too in a bit...
+		p.content I do things.. More here in a bit also...

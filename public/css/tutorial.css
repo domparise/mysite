@@ -1,42 +1,4 @@
-/*
-Kuler theme:
-	red-orange: B26000;
-	*orange: FF9923;
-	orange: FF8900;
-	darkblue: 007CB2;
-	*lightblue: 00B2FF;
-*/
-@font-face {
-    font-family: 'Latin Modern Sans';
-    src: url('../lib/Latin-Modern-Sans/lmsans10-regular.otf');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Latin Modern Sans';
-    src: url('../lib/Latin-Modern-Sans/lmsans10-oblique.otf');
-    font-weight: normal;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'Latin Modern Sans';
-    src: url('../lib/Latin-Modern-Sans/lmsans10-bold.otf');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Latin Modern Sans';
-    src: url('../lib/Latin-Modern-Sans/lmsans10-boldoblique.otf');
-    font-weight: bold;
-    font-style: italic;
-}
 
-body {
-	font-family: 'Latin Modern Sans',"Trebuchet MS", Helvetica, sans-serif;
-	font-size: 150%;
-	margin: 0;
-	background-color: #FFFFFF;
-}
 #hdr {
 	z-index: 1;
 	position: fixed;
@@ -58,10 +20,6 @@ body {
 }
 .navd {
 	border-bottom: 4px solid #FFFFFF;
-}
-
-section {
-	padding-top: 2.5%;
 }
 
 .content {

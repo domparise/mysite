@@ -38,42 +38,87 @@ $('.nav').on('click', function (event) {
 	});
 });
 
-
-$('header').on('mouseenter', function () {
-	$('.edge').stop('color',true,false).animate({
+var transitionTime = 400;
+$('header,footer').on('mouseover', function () {
+	$('header,footer').stop().animate({
 		opacity: 1,
 		backgroundColor: '#007CB2'
-	}, 500);
-	$('.nav').stop('color',true,false).animate({
+	}, transitionTime);
+	$('.nav').stop().animate({
 		opacity: 1,
 		color: '#FFFFFF'
-	}, 500);
+	}, transitionTime);
 });
-$('header').on('mouseleave', function () {
-	$('.edge').stop('color',true,false).animate({
+$('header,footer').on('mouseout', function () {
+	$('header,footer').stop().animate({
 		opacity: 1,
 		backgroundColor: '#00B2FF'
-	}, 500, 'easeOutQuad');
-	$('.nav').stop('color',true,false).animate({
+	}, transitionTime);
+	$('.nav').stop().animate({
 		opacity: 0.50,
 		color: '#FFFFFF'
-	}, 500);
-	$('.navd').stop('color',true,false).animate({
+	}, transitionTime);
+	$('.navd').stop().animate({
 		opacity: 1,
 		borderBottomColor: '#FF9923'
-	}, 500);
+	}, transitionTime);
 });
 
 
-$('footer').on('mouseenter', function () {
+/* currently nothing placed on bottom bar, too much movement onscreen */
+/* 
+$('footer').on('vmouseover', function () {
 	$(this).stop().animate({
 		top: '-=7.5%',
-		height: '+=7.5%'
+		height: '+=7.5%',
+		backgroundColor: '#007CB2'
 	},250);
 });
-$('footer').on('mouseleave', function () {
+$('footer').on('vmouseover', function () {
 	$(this).stop().animate({
 		height: '2.5%',
-		top: '97.5%'
+		top: '97.5%',
+		backgroundColor: '#00B2FF'
 	},250);
+});
+*/
+
+
+// really really shitty hack to do this, but i was gettin impatient
+var i = [0,0,0], 
+	that = [0,0,0],
+	interval = [0,0,0], 
+	offset = [0,0,0],
+	timeout;
+$('.content').on('mouseover',function(){
+	var idx = $(this).index();
+	that[idx] = $(this);
+	offset[idx] = $(this).offset().top;
+	clearInterval(interval[idx]);
+	interval[idx] = setInterval(function() {
+		offset[idx] -= i[idx]/50;
+		that[idx].offset({top:offset[idx]});
+		that[idx].css('box-shadow','0 '+((10/25)*i[idx])+'px '+((5/25)*i[idx])+'px rgba(0,0,0,'+((0.35/25)*i[idx])+'), 0 0 '+((20/25)*i[idx])+'px rgba(0,0,0,'+((0.1/25)*i[idx])+')');
+		if(i[idx]>=25) clearInterval(interval[idx]);
+		else i[idx] += 1;
+	},1);
+	timeout = setTimeout(function() {
+		$('#web-box').attr('src','https://www.facebook.com/dom.parise');
+		$('#web-box').animate({
+			opacity: 1
+		}, 250);
+	}, 500);
+});
+$('.content').on('mouseout',function(){
+	clearTimeout(timeout);
+	var idx = $(this).index();
+	that[idx] = $(this);
+	clearInterval(interval[idx]);
+	interval[idx] = setInterval(function() {
+		offset[idx] += i[idx]/50;
+		that[idx].offset({top:offset[idx]});
+		that[idx].css('box-shadow','0 '+((10/25)*i[idx])+'px '+((5/25)*i[idx])+'px rgba(0,0,0,'+((0.35/25)*i[idx])+'), 0 0 '+((20/25)*i[idx])+'px rgba(0,0,0,'+((0.1/25)*i[idx])+')');
+		if(i[idx]<=0) clearInterval(interval[idx]);
+		else i[idx] -= 1;
+	},1);
 });
