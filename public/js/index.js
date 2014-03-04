@@ -90,6 +90,9 @@ var i = [0,0,0],
 	that = [0,0,0],
 	interval = [0,0,0], 
 	offset = [0,0,0];
+
+
+
 $('.content').on('mouseover',function(){
 	$(this).stop().animate({
 		backgroundColor:'#FFFFFF'

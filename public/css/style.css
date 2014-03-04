@@ -31,6 +31,10 @@ Kuler theme:
     font-style: italic;
 }
 
+html {
+	border: 10px solid #007CB2;
+}
+
 body {
 	font-family: 'Latin Modern Sans',"Trebuchet MS", Helvetica, sans-serif;
 	font-size: 150%;
