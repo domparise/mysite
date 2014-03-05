@@ -23,7 +23,7 @@ $(document).ready( function () {
 $('.nav').on('click', function (event) {
 	$('.nav').removeClass('navd');
 	$(this).addClass('navd');
-	$('.navd').css('border-bottom-color','#FFFFFF');
+	// $('.navd').css('border-bottom-color','#FFFFFF');
 	var navTo = $(this).get(0).id;
 	window.location.hash = '#'+navTo.substr(4);
 	$('section').stop('sections',true,false).animate({opacity:0},500,function(){
@@ -148,7 +148,7 @@ $('#about .content').on('mouseleave',function(){
 var wallpapers = ['/img/Wallpaper2.jpg','/img/Wallpaper3.jpg','/img/Wallpaper5.jpg','/img/Wallpaper6.jpg'], 
 lastWP = 0, transComplete = false;
 $('#about .content:eq(2)').on('mouseenter', function() {
-	$('#ktpWallpaper').stop().animate({opacity:0.15});
+	$('#ktpWallpaper').stop().animate({opacity:0.10});
 	if(transComplete){
 		document.getElementById('ktpWallpaper').src = wallpapers[(lastWP++)%4];
 		transComplete = false;
