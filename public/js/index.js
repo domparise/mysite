@@ -52,7 +52,7 @@ $('header').on('mouseleave', function () {
 });
 
 /* goofy mouseover header resize */
-/*var navInterval = [0,0,0], navCount = [0,0,0];
+var navInterval = [0,0,0], navCount = [0,0,0];
 $('.nav').on('mouseenter', function() {
 	var idx = $(this).index();
 	clearInterval(navInterval[idx]);
@@ -72,7 +72,7 @@ $('.nav').on('mouseenter', function() {
 		if(navCount[idx]<=0) clearInterval(navInterval[idx]);
 		else navCount[idx]--;
 	},1);
-});*/
+});
 
 /*
 	also consider writing onclick functionality for hovered content paragraphs, which will persist the box content,
@@ -144,11 +144,15 @@ $('#about .content').on('mouseleave',function(){
 	},500);
 });
 /* random ktp wallpaper selection */
-var wallpapers = ['/img/Wallpaper2.jpg','/img/Wallpaper3.jpg','/img/Wallpaper5.jpg','/img/Wallpaper6.jpg'], lastWP = 0;
+var wallpapers = ['/img/Wallpaper2.jpg','/img/Wallpaper3.jpg','/img/Wallpaper5.jpg','/img/Wallpaper6.jpg'], 
+lastWP = 0, transComplete = false;
 $('#about .content:eq(2)').on('mouseenter', function() {
 	$('#ktpWallpaper').stop().animate({opacity:0.15});
-	document.getElementById('ktpWallpaper').src = wallpapers[(lastWP++)%4];
+	if(transComplete){
+		document.getElementById('ktpWallpaper').src = wallpapers[(lastWP++)%4];
+		transComplete = false;
+	}
 }).on('mouseleave', function() {
-	$('#ktpWallpaper').stop().animate({opacity:0});
+	$('#ktpWallpaper').stop().animate({opacity:0},function(){transComplete=true;});
 });
 
