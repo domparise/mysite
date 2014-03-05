@@ -156,7 +156,7 @@ section {
 
 #ktpWallpaper {
 	position: absolute;
-	opacity: 0.15;
+	opacity: 0;
 	width: 500px;
 	height: 400px;
 }
