@@ -10,12 +10,12 @@ $(document).ready( function () {
 	}, 1500);
 	setTimeout( function () {
 		$('.nav').animate({
-			// opacity: 0.30
-			opacity: 1
+			opacity: 0.30
+			// opacity: 1
 		}, 2000);
 		$('.navd,'+hash).animate({
-			opacity: 1
-			// borderBottomColor: '#FF9923'
+			opacity: 1,
+			borderBottomColor: '#FF9923'
 		}, 2000);
 	}, 500);
 });
@@ -23,7 +23,7 @@ $(document).ready( function () {
 $('.nav').on('click', function (event) {
 	$('.nav').removeClass('navd');
 	$(this).addClass('navd');
-	// $('.navd').css('border-bottom-color','#FFFFFF');
+	$('.navd').css('border-bottom-color','#FFFFFF');
 	var navTo = $(this).get(0).id;
 	window.location.hash = '#'+navTo.substr(4);
 	$('section').stop('sections',true,false).animate({opacity:0},500,function(){
@@ -33,7 +33,7 @@ $('.nav').on('click', function (event) {
 });
 
 /* opacity of non-selected nav pieces */
-/*var transitionTime = 400;
+var transitionTime = 400;
 $('header').on('mouseenter', function () {
 	$('.nav').stop().animate({
 		opacity: 1
@@ -53,7 +53,7 @@ $('header').on('mouseleave', function () {
 });
 
 /* goofy mouseover header resize */
-var navInterval = [0,0,0], navCount = [0,0,0];
+/*var navInterval = [0,0,0], navCount = [0,0,0];
 $('.nav').on('mouseenter', function() {
 	var idx = $(this).index();
 	clearInterval(navInterval[idx]);
@@ -73,7 +73,7 @@ $('.nav').on('mouseenter', function() {
 		if(navCount[idx]<=0) clearInterval(navInterval[idx]);
 		else navCount[idx]--;
 	},1);
-});
+});*/
 
 /*
 	also consider writing onclick functionality for hovered content paragraphs, which will persist the box content,
@@ -148,7 +148,7 @@ $('#about .content').on('mouseleave',function(){
 var wallpapers = ['/img/Wallpaper2.jpg','/img/Wallpaper3.jpg','/img/Wallpaper5.jpg','/img/Wallpaper6.jpg'], 
 lastWP = 0, transComplete = false;
 $('#about .content:eq(2)').on('mouseenter', function() {
-	$('#ktpWallpaper').stop().animate({opacity:0.10});
+	$('#ktpWallpaper').stop().animate({opacity:0.125});
 	if(transComplete){
 		document.getElementById('ktpWallpaper').src = wallpapers[(lastWP++)%4];
 		transComplete = false;
