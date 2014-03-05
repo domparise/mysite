@@ -10,7 +10,8 @@ app.use(express.methodOverride());
 app.use(express.static('public'));
 
 app.get('/',function(req,res){
-	res.render('index');
+	// res.render('index');
+	res.sendfile('public/index1.html');
 });
 
 var tutorials = {'why-javascript':true};
