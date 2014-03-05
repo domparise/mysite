@@ -3,23 +3,21 @@ $(document).ready( function () {
 	$('#tutorials').hide();
 	$('.edge').animate({
 		opacity: 1,
-		color: '#FFFFFF',
-		// backgroundColor: '#00B2FF'
 		backgroundColor: '#007CB2'
 	}, 1500);
 	setTimeout( function () {
 		$('.nav').animate({
-			opacity: 0.30,
-			color: '#FFFFFF',
+			opacity: 0.30
 		}, 2000);
-		$('.navd').animate({
+		$('.navd,#about').animate({
 			opacity: 1,
 			borderBottomColor: '#FF9923'
 		}, 2000);
-		$('#about').animate({
-			opacity: 1
-		}, 2000);
 	}, 500);
+
+var type = window.location.hash.substr(1);
+console.log(type);
+
 });
 
 $('.nav').on('click', function (event) {
@@ -65,38 +63,25 @@ $('header,footer').on('mouseout', function () {
 	}, transitionTime);
 });
 
+/*
+	also consider writing onclick functionality for hovered content paragraphs, which will persist the box content,
+	and return to it after sliding away another hovered content section
+	this click would also indent to the original settings, until clicked again
 
-/* currently nothing placed on bottom bar, too much movement onscreen */
-/* 
-$('footer').on('vmouseover', function () {
-	$(this).stop().animate({
-		top: '-=7.5%',
-		height: '+=7.5%',
-		backgroundColor: '#007CB2'
-	},250);
-});
-$('footer').on('vmouseover', function () {
-	$(this).stop().animate({
-		height: '2.5%',
-		top: '97.5%',
-		backgroundColor: '#00B2FF'
-	},250);
-});
+	upon clicking all 3, post picture of me pointing to left
 */
 
 
 // really really shitty hack to do this, but i was gettin impatient
-var i = [0,0,0], 
+var i = [0,0,0], j=0,
 	that = [0,0,0],
 	interval = [0,0,0], 
-	offset = [0,0,0];
-
-
-
-$('.content').on('mouseover',function(){
-	$(this).stop().animate({
-		backgroundColor:'#FFFFFF'
-	},250);
+	offset = [0,0,0], 
+	box = $('#box'), 
+	inTimeout, outTimeout, innerInterval,
+	boxOpen = false,
+	inView = [];
+$('#about .content').on('mouseenter',function(){
 	var idx = $(this).index();
 	that[idx] = $(this);
 	offset[idx] = $(this).offset().top;
@@ -105,14 +90,23 @@ $('.content').on('mouseover',function(){
 		offset[idx] -= i[idx]/50;
 		that[idx].offset({top:offset[idx]});
 		that[idx].css('box-shadow','0 '+((10/25)*i[idx])+'px '+((5/25)*i[idx])+'px rgba(0,0,0,'+((0.35/25)*i[idx])+'), 0 0 '+((20/25)*i[idx])+'px rgba(0,0,0,'+((0.1/25)*i[idx])+')');
-		if(i[idx]>=25) clearInterval(interval[idx]);
+		if(!boxOpen)
+			box.css('box-shadow','0 '+((5/25)*i[idx])+'px '+((10/25)*i[idx])+'px rgba(0,0,0,'+((0.35/25)*i[idx])+') inset, 0 0 '+((20/25)*i[idx])+'px rgba(0,0,0,'+((0.1/25)*i[idx])+') inset'); 
+		if(i[idx]>=25){
+			clearInterval(interval[idx]);
+			j = 25;
+		}
 		else i[idx] += 1;
 	},1);
+	clearTimeout(inTimeout);
+	clearTimeout(outTimeout);
+	inTimeout = setTimeout(function() {
+		$('#box span:eq('+idx+')').show('slide',{direction:'left',easing:'easeOutCubic'});
+		boxOpen = true;
+		j = 25;
+	},300);
 });
-$('.content').on('mouseout',function(){
-	$(this).stop().animate({
-		backgroundColor:'#FAFAFA'
-	},250);
+$('#about .content').on('mouseleave',function(){
 	var idx = $(this).index();
 	that[idx] = $(this);
 	clearInterval(interval[idx]);
@@ -123,4 +117,19 @@ $('.content').on('mouseout',function(){
 		if(i[idx]<=0) clearInterval(interval[idx]);
 		else i[idx] -= 1;
 	},1);
+	$('#box span').hide('slide',{direction:'right',easing:'easeInCubic'});
+	clearTimeout(inTimeout);
+	outTimeout = setTimeout(function() {
+		innerInterval = setInterval(function() {
+			box.css('box-shadow','0 '+((5/25)*j)+'px '+((10/25)*j)+'px rgba(0,0,0,'+((0.35/25)*j)+') inset, 0 0 '+((20/25)*j)+'px rgba(0,0,0,'+((0.1/25)*j)+') inset');
+			if(j<=0) clearInterval(innerInterval);
+			else j -= 1;
+		},1);
+		boxOpen = false;
+		$('#box span').hide();
+	},500);
 });
+
+function closeBox() {
+
+}

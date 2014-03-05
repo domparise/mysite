@@ -1,5 +1,3 @@
-// put up on server to get input from friends
-//
 var express = require('express'),
 	app = express();
 
