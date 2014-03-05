@@ -1,3 +1,7 @@
+section {
+	display: none;
+}
+
 .edge {
 	background-color: #007CB2;
 	opacity: 0;
@@ -13,6 +17,7 @@
 }
 
 .nav {
+	/*position: absolute;*/
 	opacity: 0;
 	font-weight: bold;
 	font-size: 110%;
@@ -25,6 +30,16 @@
 .navd {
 	border-bottom: 4px solid #FFFFFF;
 }
+
+/*#nav-about {
+	margin-left: 5%;
+}
+#nav-tutorials {
+	margin-left: 25%;
+}
+#nav-projects {
+	margin-left: 55%;
+}*/
 
 /* smaller browser */
 @media (max-width:1200px){
@@ -52,7 +67,6 @@
 	margin-right: 10%;
 	padding: 2.5%;
 	margin-top: 2.5%;
-	background-color: #FFFFFF;
 	box-shadow: 0 2.5px 5px rgba(0,0,0,0.35) inset, 0 0 10px rgba(0,0,0,0.1) inset;
 }
 
@@ -61,7 +75,7 @@
 	margin-right: 10%;
 	padding: 2.5%;
 	margin-top: 10%;
-	background-color: #FFFFFF;
+	box-shadow: none;
 } 
 
 @media (min-width: 1200px) {
@@ -123,7 +137,7 @@
 	height: 100%;
 }
 
-#box span img {
+#prof_pic {
 	position: absolute;
 	margin-left: 5px;
 	margin-top: 5px;
@@ -138,4 +152,11 @@
 
 #box #domcontent p {
 	margin-left: 45%;
+}
+
+#ktpWallpaper {
+	position: absolute;
+	opacity: 0.15;
+	width: 500px;
+	height: 400px;
 }

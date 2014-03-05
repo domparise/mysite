@@ -1,6 +1,9 @@
 $(document).ready( function () {
-	$('#projects').hide();
-	$('#tutorials').hide();
+	var hash = window.location.hash.toLowerCase();
+	console.log(hash);
+	if (hash === '') hash = '#about';
+	$(hash).show();
+	$('#nav-'+hash.substr(1)).addClass('navd');
 	$('.edge').animate({
 		opacity: 1,
 		backgroundColor: '#007CB2'
@@ -9,15 +12,11 @@ $(document).ready( function () {
 		$('.nav').animate({
 			opacity: 0.30
 		}, 2000);
-		$('.navd,#about').animate({
+		$('.navd,'+hash).animate({
 			opacity: 1,
 			borderBottomColor: '#FF9923'
 		}, 2000);
 	}, 500);
-
-var type = window.location.hash.substr(1);
-console.log(type);
-
 });
 
 $('.nav').on('click', function (event) {
@@ -25,42 +24,54 @@ $('.nav').on('click', function (event) {
 	$(this).addClass('navd');
 	$('.navd').css('border-bottom-color','#FFFFFF');
 	var navTo = $(this).get(0).id;
+	window.location.hash = '#'+navTo.substr(4);
 	$('section').stop('sections',true,false).animate({opacity:0},500,function(){
 		$('section').hide();
-		if (navTo === 'nav-about') {
-			$('#about').show().animate({opacity:1},500);
-		} else if (navTo === 'nav-tut') {
-			$('#tutorials').show().animate({opacity:1},500);
-		} else if (navTo === 'nav-proj') {
-			$('#projects').show().animate({opacity:1},500);
-		}
+		$('#'+navTo.substr(4)).show().animate({opacity:1},500);
 	});
 });
 
+/* opacity of non-selected nav pieces */
 var transitionTime = 400;
-$('header,footer').on('mouseover', function () {
-	$('header,footer').stop().animate({
-		opacity: 1,
-		// backgroundColor: '#007CB2'
-	}, transitionTime);
+$('header').on('mouseenter', function () {
 	$('.nav').stop().animate({
-		opacity: 1,
-		// color: '#FFFFFF'
+		opacity: 1
 	}, transitionTime);
 });
-$('header,footer').on('mouseout', function () {
-	$('header,footer').stop().animate({
+$('header').on('mouseleave', function () {
+	$('header').stop().animate({
 		opacity: 1,
-		// backgroundColor: '#00B2FF'
 	}, transitionTime);
 	$('.nav').stop().animate({
 		opacity: 0.30,
-		// color: '#FFFFFF'
 	}, transitionTime);
 	$('.navd').stop().animate({
 		opacity: 1,
 		borderBottomColor: '#FF9923'
 	}, transitionTime);
+});
+
+/* goofy mouseover header resize */
+var navInterval = [0,0,0], navCount = [0,0,0];
+$('.nav').on('mouseenter', function() {
+	var idx = $(this).index();
+	clearInterval(navInterval[idx]);
+	navInterval[idx] = setInterval( function() {
+		var percnt = String(100 + navCount[idx]);
+		console.log(percnt);
+		$('.nav:eq('+idx+')').css('font-size',percnt+'%');
+		if(navCount[idx]>=30) clearInterval(navInterval[idx]);
+		else navCount[idx]++;
+	},1);
+}).on('mouseleave', function() {
+	var idx = $(this).index();
+	clearInterval(navInterval[idx]);
+	navInterval[idx] = setInterval( function() {
+		var percnt = String(100 + navCount[idx]);
+		$('.nav:eq('+idx+')').css('font-size',percnt+'%');
+		if(navCount[idx]<=0) clearInterval(navInterval[idx]);
+		else navCount[idx]--;
+	},1);
 });
 
 /*
@@ -69,6 +80,8 @@ $('header,footer').on('mouseout', function () {
 	this click would also indent to the original settings, until clicked again
 
 	upon clicking all 3, post picture of me pointing to left
+
+	box-shadow: 0 2.5px 5px rgba(0,0,0,0.35) inset, 0 0 10px rgba(0,0,0,0.1) inset;
 */
 
 
@@ -77,6 +90,7 @@ var i = [0,0,0], j=0,
 	that = [0,0,0],
 	interval = [0,0,0], 
 	offset = [0,0,0], 
+	/* left box vars */
 	box = $('#box'), 
 	inTimeout, outTimeout, innerInterval,
 	boxOpen = false,
@@ -129,7 +143,9 @@ $('#about .content').on('mouseleave',function(){
 		$('#box span').hide();
 	},500);
 });
+/* random ktp wallpaper selection */
+var wallpapers = ['/img/Wallpaper2.jpg','/img/Wallpaper3.jpg','/img/Wallpaper5.jpg','/img/Wallpaper6.jpg'], lastWP = 0;
+$('#about .content:eq(2)').on('mouseenter', function() {
+	document.getElementById('ktpWallpaper').src = wallpapers[(lastWP++)%4];
+});
 
-function closeBox() {
-
-}
