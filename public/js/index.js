@@ -10,11 +10,12 @@ $(document).ready( function () {
 	}, 1500);
 	setTimeout( function () {
 		$('.nav').animate({
-			opacity: 0.30
+			// opacity: 0.30
+			opacity: 1
 		}, 2000);
 		$('.navd,'+hash).animate({
-			opacity: 1,
-			borderBottomColor: '#FF9923'
+			opacity: 1
+			// borderBottomColor: '#FF9923'
 		}, 2000);
 	}, 500);
 });
@@ -32,7 +33,7 @@ $('.nav').on('click', function (event) {
 });
 
 /* opacity of non-selected nav pieces */
-var transitionTime = 400;
+/*var transitionTime = 400;
 $('header').on('mouseenter', function () {
 	$('.nav').stop().animate({
 		opacity: 1
