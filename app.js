@@ -19,7 +19,7 @@ app.get('/tutorial/:category', function (req, res) {
 });
 
 app.get('/tutorial/:category/:topic', function (req, res) {
-	if(req.params.category && res.params.topic)
+	if(req.params.category && req.params.topic)
 		res.render(req.params.category+'/'+req.params.topic, function (err, html) {
 			// if(err) return res.redirect('/#tutorials');
 			if(err) console.log(err);
