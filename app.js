@@ -1,7 +1,7 @@
 var express = require('express'),
 	app = express();
 
-app.set('views','views');
+app.set('views','tutorials');
 app.set('view engine', 'jade');
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -14,13 +14,18 @@ app.get('/',function(req,res){
 	res.sendfile('public/index1.html');
 });
 
-var tutorials = {'why-javascript':true};
+app.get('/tutorial/:category', function (req, res) {
+	res.redirect('/#tutorials');
+});
 
-app.get('/tutorial/:name', function (req, res) {
-	if (req.params.name in tutorials)
-		res.render('tutorial/'+req.params.name);
-	else 
-		res.redirect('/');
+app.get('/tutorial/:category/:topic', function (req, res) {
+	if(req.params.category && res.params.topic)
+		res.render(req.params.category+'/'+req.params.topic, function (err, html) {
+			// if(err) return res.redirect('/#tutorials');
+			if(err) console.log(err);
+			else return res.send(html);
+		});
+	else res.redirect('/#tutorials');
 });
 
 app.listen(3000,function(){
