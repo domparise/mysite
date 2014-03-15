@@ -1,5 +1,6 @@
 var express = require('express'),
-	app = express();
+	app = express(),	
+	exec = require('child_process').exec;
 
 app.set('views','tutorials');
 app.set('view engine', 'jade');
@@ -30,4 +31,8 @@ app.get('/tutorial/:category/:topic', function (req, res) {
 
 app.listen(3000,function(){
 	console.log('Ready to go on port 3000');
+});
+
+app.post('/api/gitpush', function (req, res) {
+	
 });
