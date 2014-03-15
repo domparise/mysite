@@ -1,0 +1,94 @@
+extends ../layout
+block content
+	header.edge
+		div#hdr-box
+			span#nav-category Building Blocks
+			span#nav-topic Introduction - Variables and Control Structures
+	article#tutorial
+		h1 Introduction - Variables and Control Structures
+		div.content
+			p.
+				Programming is like baking. You need all the right ingredients, you need a recipe to add them in the right order, and you need an oven, to make it happen. Except when we're programming, we're making the ingredients from nothing and we're writing the recipe as we go.
+			p.
+				In this respect, the ingredients would be the variables, the recipe would be the algorithms, or the logic used to execute our program, and the oven is a computer and software to run the program. 
+			p.
+				People often describe computer science as just math and logic. At its lowest level, code is a collection of variables, operators, and control structures. Variables, just like in math, are symbolic names used to hold value. Operators are used to perform known mathematical and logical operations like addition and comparison. You may be less familiar with control structures, but these are merely programming constructs used to control the flow of our code. Understanding control flow, however, may take a bit of explanation.
+			p.
+				Returning to the baking analogy, consider the way that a recipe is carried out. It is a precise, ordered set of steps, that if followed correctly will produce the desired result. As you gather ingredients and put your recipe together, you may not notice that you're doing a number of complex logical operations in the process. For example, if the recipe asks for 2 eggs, what we're really doing is reading this requirement from the recipe and storing this fact in our memory for a short period of time, then based on other things in our memory, evaluating if this is something we can produce. Perhaps we don't even know if we have eggs, but we at least know to check the fridge. If there's eggs in the fridge, we open the egg carton to determine if we fulfil the requirement of having 2 eggs. If we do, then we grab them and return to our workspace. If we don't, we know we need to go to the store and get some. 
+
+			p.
+				The mind effortlessly flows through this train of thought, at each step evaluating, based on our environment and memory, the conditions required to carry out the task. Code, being evaluated line by line, works the same way; with variables as what we know, we can use conditional statements to specify what to do next.
+
+			p.
+				Every math problem you've ever done starts out with an empty, formless universe that is unique to scope of your problem. What I mean by this is, until we read the question and determine what values we need to use to solve the problem, nothing else is known regarding the enviroment used to solve the problem. For example, if we have the word problem:
+
+			p.code.
+				You have 10 apples. How many apples do you have if I give you 5 more apples?
+
+			p.
+				As you read this problem, you start by mentally taking note of how many apples you have. For pure pedigogy, lets say we have to use a piece of paper to help solve the problem. We'd begin by by first writing down something like:
+			p.code.
+				apples = 10
+			p.
+				To elaborate on the "empty, formless universe unique to scope of your problem", consider the fact that the paper was blank until we chose to write something down. Before writing, there was nothing else that might influence how you choose to solve this problem. If we had previously solved a math problem that had something to do with apples, the number of apples used to solve that problem doesn't carry over to the number of apples used to solve the current problem. You may not consider it, but each time you approach a math problem, you start with a blank slate. If each math problem were to exist in its own tiny little mathematical universe, each of these universes start off as completely empty, and theres not any intersection between these universes. 
+
+			p.
+				As programmers we're just abstract mathemiticians solving very complex math problems. When we write code, we do it to try and solve a problem, and our task is to craft the universe used to solve said problem. Not only are we defining what exists within the universe of our math problem, but we also get to describe the rules by which this universe operates. This is just like how our physical universe is made of up atoms and matter existing on the basis of a set of rules like gravity and the speed of light. In sculpting a solution to a specific problem, we begin by isolating the context of the problem in its own universe, then describe the conditions of our problem by creating and declaring the 'matter' and 'laws of physics' for that particular universe.
+
+			p.
+				Each variable we use adds to the description of the universe of our problem, and our control structures are used to describe what to do depending on the situation, effectively describing the operation of this universe, or how it uses variables to solve the problem. A computer executes operations one-by-one, step-by-step, or line-by-line, and at each step, we're adding more to this desctiption. So the following code --
+
+			p.code.
+				var x;
+				var y = 5;
+
+			p.
+				-- describes a universe that exists as two pieces of information, the variables x and y. Variable y is described as the value 10, but the description for variable x is not explicitly defined. It is important, however, to also note the step-by-step execution, where we observe that upon the first step, when we declare the existance of the undefined variable x, the universe knows nothing of the existance of the, soon to be declared, variable y.
+
+			p.
+				Luckily, we can describe the rules of our universe in a manner that is natural to human thought, because in the end math and computer science are a product of human thought. We can branch the flow of our train of thought, or in regards to code, the flow of control, by using statements like the pseudocode -- 
+			p.code.
+				if a condition holds true:
+					do something;
+				else if not:
+					do something else;
+
+			p.
+				-- or even better, like the real code --
+
+			p.code.
+				if ( 5 != 10 ) {
+					// do something
+				} else {
+					// do something else
+				}
+
+			p.
+				We use code syntax to concisely describe logical concepts. Parenthesis here are used to evaluate something. That something is the statement '5 is not equal to 10'. Because 'is not equal' is a bit verbose, we instead use the operator '!='. Curly braces are used to indicate the scope, or context, of the result of this evaluation. Key words, like 'if' and 'else', are used to trigger the execution of the resulting context based on the evaluation of what we propose to be true, or the predicate.  
+
+			p.
+				Variables and control structures are then used in concert to present a universe where we can declare the rules, but these rules can be changed in a predictable and arranged fashion:
+
+			p.code.
+				var x = 10;
+				if ( x == 10 ) {
+					x = x + 5;
+				}
+				if ( x == 10 ) {
+					x = x + 5;
+				}
+
+			p.
+				If we were to execute the above program, the value of x at the end of execution would be 15. This should make sense, because we begin by declaring the existance of a variable x, and assign to it the value of 10. In the first 'if statement', the predicate, 'x is equal to ten', is true, whereupon we then assign the value of x to be the value of x + 5.
+
+			p. 
+				One final note on the above code block is how variables are assigned. When you use a single equal sign '=', you are assigning the value on the left hand side of the = to the result of the evaluation of what lies to the right of the equal sign. To address the confusing ambiguity of using the same operator to compare two values and to assign a value, we use a single equal sign '=' as the assignment operator, and the double equal sign as the equality comparison operator. 
+
+			p.
+				Programming languages are created equal in the sense that they all use variables, operators, and control structures, but where they differ is in the syntax by which they choose to represent each of these concepts. Lucky enough for us programmers, we don't need to remember all these things, as each language's documentation on how its used is available online:
+
+			a(href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Values,_variables,_and_literals',target='_blank') Javascript values and variables
+			a(href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators',target='_blank') Javascript operators
+			a(href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Statements',target='_blank') Javascript control statements
+
+			
