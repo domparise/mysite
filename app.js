@@ -34,5 +34,8 @@ app.listen(3000,function(){
 });
 
 app.post('/api/gitpush', function (req, res) {
-	
+	console.log(req);
+	exec('git pull', function() {
+		console.log('pulled update from github');
+	});
 });
