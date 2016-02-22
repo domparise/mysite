@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+html {
+	overflow: hidden;
+}
+
+section {
+	display: none;
+}
+
+>>>>>>> 75a31529de7e93295cdbe8d7590cccdd10807575
 .edge {
 	background-color: #007CB2;
 	opacity: 0;
