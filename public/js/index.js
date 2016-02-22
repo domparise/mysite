@@ -93,7 +93,7 @@ function bindHover (selector) {
 
 	upon clicking all 3, post picture of me pointing to left
 
-	box-shadow: 0 2.5px 5px rgba(0,0,0,0.35) inset, 0 0 10px rgba(0,0,0,0.1) inset;
+	box-shadow: 0 10px 5px rgba(0,0,0,0.35, 0 0 20px rgba(0,0,0,0.1);
 */
 
 

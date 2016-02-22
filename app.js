@@ -1,32 +1,32 @@
 var express = require('express'),
-	app = express();
+	dom_app = express(),
+	confertia_app = express(),
+	app = express(),
+	vhost = require('vhost');
 
-app.set('views','tutorials');
-app.set('view engine', 'jade');
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(express.static('public'));
+dom_app.set('views','tutorials');
+dom_app.set('view engine', 'jade');
+dom_app.use(express.logger('dev'));
+dom_app.use(express.json());
+dom_app.use(express.urlencoded());
+dom_app.use(express.methodOverride());
+dom_app.use(express.static('public'));
 
-app.get('/',function(req,res){
-	// res.render('index');
+dom_app.get('/',function(req,res){
 	res.sendfile('public/index1.html');
 });
 
-app.get('/tutorial/:category', function (req, res) {
-	res.redirect('/#tutorials');
-});
+// handle domain names
+app.use(vhost('domparise.com', dom_app));
+app.use(vhost('*.domparise.com', dom_app));
+app.use(vhost('domparise.tech', dom_app));
+app.use(vhost('*.domparise.tech', dom_app));
 
-app.get('/tutorial/:category/:topic', function (req, res) {
-	if(req.params.category && res.params.topic)
-		res.render(req.params.category+'/'+req.params.topic, function (err, html) {
-			// if(err) return res.redirect('/#tutorials');
-			if(err) console.log(err);
-			else return res.send(html);
-		});
-	else res.redirect('/#tutorials');
-});
+// handle confertia prototype
+confertia_app.use(express.static('confertia'));
+
+app.use(vhost('confertia.com', confertia_app));
+app.use(vhost('*.confertia.com', confertia_app));
 
 app.listen(3000,function(){
 	console.log('Ready to go on port 3000');
